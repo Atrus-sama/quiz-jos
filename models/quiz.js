@@ -7,6 +7,10 @@ module.exports = function(sequelize, DataTypes) {
       validate:
       {
         notEmpty: {msg: "-> Falta Pregunta"},
+        notIn: {
+          args: [["Pregunta"]],
+          msg: "-> Falta Pregunta"
+        }
       }
     },
     respuesta: {
@@ -14,6 +18,10 @@ module.exports = function(sequelize, DataTypes) {
       validate:
       {
         notEmpty: {msg: "-> Falta Respuesta"},
+        notIn: {
+          args: [["Respuesta"]],
+          msg: "-> Falta Respuesta"
+        }
       }
     }
   });
