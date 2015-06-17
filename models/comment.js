@@ -6,6 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       {
         notEmpty: {msg: "-> Falta Comentario"}
       }
+    },
+    publicado: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
 }
