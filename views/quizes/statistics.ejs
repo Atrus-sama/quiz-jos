@@ -1,0 +1,20 @@
+<ul>
+  <li>Número de preguntas: <%= quizes.length %></li>
+  <li>Número de comentarios totales: <%= comments.length %></li>
+  <li>Número medio de comentarios por pregunta: <%= comments.length / quizes.length %></li>
+  <li>Número de preguntas sin comentarios:
+    <% var pc = 0;
+      var ps = 0;
+      for (var i=0; i<quizes.length; i++) {
+        if (quizes[i].Comments.length > 0) {
+          pc++;
+        }
+        else {
+          ps++;
+        }
+      }
+    %>
+    <%= ps %>
+  </li>
+  <li>Número de preguntas con comentarios: <%= pc %></li>
+</ul>

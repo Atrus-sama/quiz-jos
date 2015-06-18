@@ -118,3 +118,16 @@ exports.destroy = function (req, res) {
     res.redirect("/quizes");
   }).catch(function(error){next(error)});
 }
+
+// Estadisticas
+exports.statistics = function (req, res) {
+  models.Quiz.findAll({
+    include: [{model: models.Comment}]
+  }).then(function (quizes) {
+    models.Comment.findAll().then(function (comments) {
+      res.render("quizes/statistics.ejs", {quizes: quizes, comments: comments, errors: []});
+    }).catch(function(error) {
+      next(error);
+    });
+  });
+}

@@ -29,6 +29,17 @@ app.use(session());
 app.use(methodOverride("_method"))
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+
+  req.session.original = req.session.actual || 0;
+  req.session.actual = new Date().getTime();
+
+  if (req.session.actual - req.session.original > 15000) {
+    delete req.session.user;
+  }
+  next();
+});
+
 //Helpers dinamicos:
 app.use(function (req, res, next) {
 
